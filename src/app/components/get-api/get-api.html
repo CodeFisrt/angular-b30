@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-6"> 
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr </th>
+                    <th>Name</th>
+                    <th>username</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of userList; track $index) {
+                <tr>
+                    <td>{{ $index+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.address.city}}</td>
+                      <td>{{item.address.geo.lat}}</td>
+                </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getTodoItems()">Get To Do Items</button>
+
+        <ul>
+            <li *ngFor="let item of todoItemList"> {{item.title}} - {{item.completed === true ? 'completed':'Not Completed'}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllLocations()">Get Location</button>
+
+        <select>
+            <option *ngFor="let location of locationArray" > {{location.locationName}}</option>
+        </select>
+
+    </div>
+
+</div>

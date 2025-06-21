@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header bg-primary">
+                Location List
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header bg-primary">
+               New Location Form
+            </div>
+            <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Location Name</label>
+                            <input type="text" [(ngModel)]="newLocationObj.locationName" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Location Code</label>
+                            <input type="text" [(ngModel)]="newLocationObj.code" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-6">
+                            <button class="btn btn-secondary">Reset Form</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-success" (click)="onSaveLocation()">Save Location</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

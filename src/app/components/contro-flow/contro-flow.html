@@ -1,0 +1,233 @@
+<div class="row">
+    <div class="col-3">
+        @if(isDiv1Visiable== true) {
+        <div class="bg-success p-3">
+            Div 1
+        </div>
+        }
+
+    </div>
+    <div class="col-3">
+        @if (div2Status == 'Show') {
+        <div class="bg-danger p-3">
+            Div 2
+        </div>
+        }
+
+    </div>
+    <div class="col-3">
+        @if (isDiv3Visisable) {
+        <div class="p-3 bg-warning">
+            DIv 3
+        </div>
+        } @else {
+        <p>Div Hidden</p>
+        }
+
+    </div>
+</div>
+<hr>
+<div class="row pt-3 pb-3">
+    <div class="col-3"> 
+        <div *ngIf="isDiv1Visiable == true" class="bg-success p-3">
+            Div 1
+        </div> 
+    </div>
+    <div class="col-3">
+
+        <div *ngIf="div2Status == 'Show'" class="bg-danger p-3">
+            Div 2
+        </div>
+
+    </div>
+    <div class="col-3">
+
+        <div class="p-3 bg-warning" *ngIf="true">
+            DIv 3
+        </div>
+
+        <p *ngIf="getDiv1VisibilityStatus()">
+            Div Hidden
+        </p>
+        <p *ngIf="getDiv2Status">
+            way 5 using getter method
+        </p>
+
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let item of cityList"> {{item}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" *ngFor="let city of cityList"> {{city}}</button>
+    </div>
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr </th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let item of studentList;let sr = index">
+                    <td>{{ sr+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>
+                        <span *ngIf="item.isActive == true">Active</span>
+                        <span *ngIf="item.isActive == false">De-active</span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
+<hr>
+
+
+<div class="row pt-3">
+    <div class="col-3">
+        <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+        <button class="btn btn-secondary" (click)="showDiv1()">Show</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="toggleDiv3()">Toggle Div3</button>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3">
+        <input type="text" placeholder="Day Start Char" [(ngModel)]="startingCharDayName" maxlength="3" />
+    </div>
+    <div class="col-3">
+        @if (startingCharDayName == 'mon') {
+        <span>Monday</span>
+        } @else if (startingCharDayName == 'tue') {
+        <span>Tuesday</span>
+        } @else if (startingCharDayName == 'wed') {
+        <span>Wednesday</span>
+        } @else if (startingCharDayName == 'thu') {
+        <span>Thursday</span>
+        } @else if (startingCharDayName == 'fri') {
+        <span>Friday</span>
+        } @else {
+        @if (startingCharDayName == '') {
+        <span>ENter Day Name</span>
+        } @else {
+        <span>Wrong Day Name</span>
+        }
+        }
+    </div>
+    <div class="col-3">
+        @switch (startingCharDayName) {
+        @case ('mon') {
+        <span>Monday</span>
+        }
+        @case ('tue') {
+        <span>Tuesday</span>
+        }
+        @case ('wed') {
+        <span>wesday</span>
+        }
+        @default {
+        @if (startingCharDayName == '') {
+        <span>ENter Day Name</span>
+        } @else {
+        <span>Wrong Day Name</span>
+        }
+        }
+        }
+    </div>
+    <div class="col-3 bg-danger">
+        <div [ngSwitch]="startingCharDayName">
+            <span *ngSwitchCase="'mon'">Monday</span>
+            <span *ngSwitchCase="'tue'">tuesday</span>
+            <span *ngSwitchCase="'wed'">wednesday</span>
+            <span *ngSwitchCase="'thu'">Thirsday</span>
+            <span *ngSwitchDefault>No Value</span>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row pt-3">
+    <div class="col-3">
+        <ul>
+            @for (item of cityList; track $index) {
+            <li>{{item}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        @for (item of cityList; track $index) {
+        <button class="btn btn-primary m-1 p-3">{{item}}</button>
+        }
+
+    </div>
+    <div class="col-3">
+        @for (cityName of cityList; track $index) {
+        <span> {{cityName}}</span>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr </th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of studentList; track $index) {
+                <tr>
+                    <td>{{ $index+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.mobile}}</td>
+                </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+
+</div>
+
+<div class="row">
+    @for (item of studentList; track $index) {
+    <div class="col-3 mt-1">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{item.name}}</h4>
+                <p class="card-text">{{item.city}} - {{item.mobile}}</p>
+                <a href="#" class="card-link">Edit</a>
+                <a href="#" class="card-link">Delete</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>

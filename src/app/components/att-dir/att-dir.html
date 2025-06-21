@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-3">
+        <div class="p-3" [ngClass]="div1BgClassName">
+            Div 1 - {{div1BgClassName}}
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="isCheked ==true ? 'bg-success':'bg-danger'">
+            Div 2
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-3" [ngClass]="'bg-secondary'">
+            Div 3
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="num1 == num2 ? 'bg-success':'bg-warning'">
+            DIV 4
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <div class="p-3" style="color: red;background-color: orange;" >
+            Div 1 - {{div1BgClassName}}
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4"  [ngStyle]="{'color':'red','background-color':backColor}">
+            Div 2
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-3" [ngStyle]="myCssObj">
+            Div 3
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngStyle]="{color:isCheked == true ? 'red':'blue' }" >
+            DIV 4
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="toggleDiv1()">Toggle</button>
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isCheked">
+    </div>
+    <div class="col-3">
+
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="num1">
+        <input type="text" [(ngModel)]="num2">
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr </th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of studentList; track $index) {
+                <tr>
+                    <td>{{ $index+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td [ngStyle]="{color:item.isActive == true?'red':'orange'}">{{item.city}}</td>
+                    <td [ngClass]="item.isActive == true ? 'bg-success':'bg-danger'">
+                        {{item.mobile}}</td>
+                </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+</div>

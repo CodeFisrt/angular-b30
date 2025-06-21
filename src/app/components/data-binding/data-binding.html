@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-3">
+        courseName => {{courseName}}
+    </div>
+    <div class="col-3">
+        courseDuration: <h6>{{courseDuration}}</h6>
+    </div>
+    <div class="col-3">
+        <p><span>latestVersion =></span> <span>{{latestVersion}}</span></p>
+    </div>
+    <div class="col-3">
+        <input type="text" placeholder="{{myPlaceHoldertext}}" value="{{courseName}}">
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [checked]="isActive" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [placeholder]="myPlaceHoldertext" [value]="courseDuration">
+    </div>
+    <div class="col-3">
+        <input [type]="inputType">
+    </div>
+    <div class="col-3">
+        <div [class]="myClassName">
+
+            div 111
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="showWelcomeMessage()">Show Welcome Message</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="showMessage('Angular')">Angular</button>
+        <button class="btn btn-primary" (click)="showMessage('React')">React</button>
+        <button class="btn btn-danger" (click)="showMessage('Java')">Java</button>
+    </div>
+    <div class="col-3">
+        <select (change)="cityChanged()" class="form-select">
+            <option value="">Pune</option>
+            <option value="">Nagpur</option>
+            <option value="">Mumbai</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <label for="" (click)="showWelcomeMessage()"> Click Me</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type="text" (input)="onTextChnages()" >
+    </div>
+    <div class="col-3">
+        <div class="bg-danger text-primary p-3" (mouseenter)="onMOuseEneter()" (mouseleave)="onMOuseLeft()">
+            Div rea
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3">
+        <input type="text" class="form-control" value="{{courseName}}">
+    </div>
+     <div class="col-3">
+        <input type="text" class="form-control" [value]="courseName">
+    </div>
+    <div class="col-3">
+        {{courseName}}
+    </div>
+    <div class="col-3">
+          <button class="btn btn-danger" (click)="onCourseChnage()">Chnage Course</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="courseName">
+    </div>
+    <div class="col-3">
+        <select [(ngModel)]="courseName">
+            <option >Angular</option>
+            <option >ReactJs</option>
+            <option >Dot Net </option>
+            <option >Java</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isActive"> -{{isActive}}
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="studentObj.name" placeholder="Name" >
+    </div>
+    <div class="col-3">
+        <input type="text" placeholder="City" [(ngModel)]="studentObj.city" >
+    </div>
+    <div class="col-3">
+        <input type="text" placeholder="Mobile" [(ngModel)]="studentObj.mobile" >
+    </div>
+    <div class="col-3">
+        city :{{studentObj.city}} <br>
+        mobile :{{studentObj.mobile}}<br>
+        name :{{studentObj.name}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="cityList[1]">
+    </div>
+    <div class="col-3">
+        {{cityList}}
+    </div>
+    <div class="col-3">
+        <div [contentEditable]="true" [(ngModel)]="courseName">
+            Div 
+        </div>
+    </div>
+</div>

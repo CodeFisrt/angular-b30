@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
+import { User } from '../../services/user';
 
 @Component({
   selector: 'app-admin',
@@ -10,10 +12,23 @@ import { Component } from '@angular/core';
 export class Admin {
 
   courseName = "Samsum Laptop" ;
-
+  
+  userService = inject(User)
+  userList: any[]= [];
  
 
   constructor() {
-    console.log(this.courseName)
+    console.log(this.courseName);
+    //this.getUsers();
+    const result =  this.userService.getSum(44,55);
+  }
+
+  getUsers() {
+    // this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((Res: any)=>{
+    //   this.userList =  Res;
+    // })
+    this.userService.getJsonUsers().subscribe((result: any)=>{
+      this.userList =  result;
+    })
   }
 }

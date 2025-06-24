@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { User } from '../../services/user';
 
 @Component({
   selector: 'app-get-api',
@@ -16,18 +17,24 @@ export class GetAPI {
   locationArray: any[] = [];
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private userService: User) {
     debugger;
     this.getJsonUsers();
+
+    const result =  this.userService.getSum(12,15);
   }
 
   getJsonUsers() {
     debugger;
-    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((res: any) => {
+    // this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((res: any) => {
+    //   debugger;
+    //   this.userList = res;
+    // })
+
+    this.userService.getJsonUsers().subscribe((res:any)=>{
       debugger;
       this.userList = res;
     })
-
   }
 
   getTodoItems() {

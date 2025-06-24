@@ -7,6 +7,8 @@ import { ControFlow } from './components/contro-flow/contro-flow';
 import { AttDir } from './components/att-dir/att-dir';
 import { GetAPI } from './components/get-api/get-api';
 import { PostAPI } from './components/post-api/post-api';
+import { CarMaster } from './components/car-master/car-master';
+import { ReactiveForm } from './components/reactive-form/reactive-form';
 
 export const routes: Routes = [
 
@@ -28,6 +30,10 @@ export const routes: Routes = [
         component: User
     },
     {
+        path:'car-master',
+        component: CarMaster
+    },
+    {
         path:'variable-ex',
         component:Variables
     },
@@ -46,6 +52,10 @@ export const routes: Routes = [
     {
         path:'post-api',
         component:PostAPI
+    },
+    {
+        path:'reactive',
+        component:ReactiveForm
     }
     
 ];

@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Vehicle Cards Section -->
+    <div class="col-md-8">
+      <div class="row" id="vehicleCards">
+        <!-- Example Vehicle Card -->
+        @for (item of carList; track $index) {
+        <div class="col-4 mt-2">
+          <div class="card h-100">
+            <img [src]="item.carImage" style="height: 100px;" class="card-img-top" alt="Car Image">
+            <div class="card-body">
+              <h5 class="card-title">{{item.brand}} - {{item.model}} ({{item.year}})</h5>
+              <p class="card-text">
+                <strong>Color:</strong> {{item.color}}<br>
+                <strong>Rate/Day:</strong> ₹{{item.dailyRate}}<br>
+                <strong>Reg No:</strong>{{item.regNo}}
+              </p>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+        <!-- Repeat .col for more cards dynamically -->
+      </div>
+    </div>
+
+    <!-- Vehicle Form Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          Add / Edit Vehicle
+        </div>
+        <div class="card-body">
+          <form [formGroup]="newCarForm">
+            <div class="mb-3">
+              <label class="form-label">Brand</label>
+              <input type="text" formControlName="brand" class="form-control" id="brand">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Model</label>
+              <input type="text" formControlName="model" class="form-control" id="model">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Year</label>
+              <input type="number" formControlName="year" class="form-control" id="year">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Color</label>
+              <input type="text" formControlName="color" class="form-control" id="color">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Daily Rate</label>
+              <input type="number" formControlName="dailyRate" class="form-control" id="dailyRate">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Registration No.</label>
+              <input type="text" formControlName="regNo" class="form-control" id="regNo">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Car Image URL</label>
+              <input type="text" formControlName="carImage" class="form-control" id="carImage">
+            </div>
+            <div class="d-grid">
+
+            --  {{newCarForm.controls['carId'].value}}
+              @if (newCarForm.controls['carId'].value ==0) {
+              <button type="button" (click)="onSaveCar()" class="btn btn-success">Save Vehicle</button>
+              } @else {
+              <button type="button" (click)="onSaveCar()" class="btn btn-warning">Update Vehicle</button>
+              }
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

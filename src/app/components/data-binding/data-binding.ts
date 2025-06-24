@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -25,8 +26,17 @@ export class DataBinding {
 
   cityList: string[] = ['Pune','Nagpur','Mumbai']
 
+  http= inject(HttpClient)
+  userList: any[]= [];
+
   constructor() {
     this.latestVersion = "angular 20"
+  }
+
+  getUsers() {
+    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((Res: any)=>{
+      this.userList =  Res;
+    })
   }
 
   showWelcomeMessage() {

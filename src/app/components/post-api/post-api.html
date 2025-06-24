@@ -5,34 +5,64 @@
                 Location List
             </div>
             <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr </th>
+                            <th>Location Name</th>
+                            <th>Code</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        @for (item of locationArray; track $index) {
+                        <tr>
+                            <td>{{ $index+1}}</td>
+                            <td>{{item.locationName}}</td>
+                            <td>{{item.code}}</td>
+                            <td>
+
+                                <button (click)="onEdit(item)" class="btn btn-success">Edit</button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+
+
+                </table>
             </div>
         </div>
     </div>
     <div class="col-6">
         <div class="card">
             <div class="card-header bg-primary">
-               New Location Form
+                New Location Form
             </div>
             <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="">Location Name</label>
-                            <input type="text" [(ngModel)]="newLocationObj.locationName" class="form-control">
-                        </div>
-                        <div class="col-6">
-                            <label for="">Location Code</label>
-                            <input type="text" [(ngModel)]="newLocationObj.code" class="form-control">
-                        </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">Location Name</label>
+                        <input type="text" [(ngModel)]="newLocationObj.locationName" class="form-control">
                     </div>
-                    <div class="row pt-3">
-                        <div class="col-6">
-                            <button class="btn btn-secondary">Reset Form</button>
-                        </div>
-                        <div class="col-6">
+                    <div class="col-6">
+                        <label for="">Location Code</label>
+                        <input type="text" [(ngModel)]="newLocationObj.code" class="form-control">
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-6">
+                        <button class="btn btn-secondary">Reset Form</button>
+                    </div>
+                     
+                    <div class="col-6">
+                        @if(newLocationObj.locationId ==0) {
                             <button class="btn btn-success" (click)="onSaveLocation()">Save Location</button>
-                        </div>
+                        } @else {
+                            <button class="btn btn-warning" (click)="onUpdate()">Update Location</button>
+                        } 
                     </div>
+                </div>
             </div>
         </div>
     </div>

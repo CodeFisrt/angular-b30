@@ -38,10 +38,34 @@
             <div class="mb-3">
               <label class="form-label">Brand</label>
               <input type="text" formControlName="brand" class="form-control" id="brand">
+              @if(newCarForm.controls['brand'].touched || newCarForm.controls['brand'].dirty) {
+              <div class="text-danger">
+                <!-- {{locationName.errors |json}} -->
+                @if(newCarForm.controls['brand'].errors?.['required']){
+                <span>This Is Required</span>
+                }
+                @if (newCarForm.controls['brand'].errors?.['minlength']) {
+                <span>Min 5 Char Needed</span>
+                }
+
+              </div>
+              }
             </div>
             <div class="mb-3">
               <label class="form-label">Model</label>
               <input type="text" formControlName="model" class="form-control" id="model">
+              @if(newCarForm.controls['model'].touched || newCarForm.controls['model'].dirty) {
+              <div class="text-danger">
+                <!-- {{locationName.errors |json}} -->
+                @if(newCarForm.controls['model'].errors?.['required']){
+                <span>This Is Required</span>
+                }
+                @if (newCarForm.controls['model'].errors?.['email']) {
+                <span>Email Not Correct</span>
+                }
+
+              </div>
+              }
             </div>
             <div class="mb-3">
               <label class="form-label">Year</label>
@@ -65,9 +89,9 @@
             </div>
             <div class="d-grid">
 
-            --  {{newCarForm.controls['carId'].value}}
+           -- {{newCarForm.invalid}}
               @if (newCarForm.controls['carId'].value ==0) {
-              <button type="button" (click)="onSaveCar()" class="btn btn-success">Save Vehicle</button>
+              <button type="button" [disabled]="newCarForm.invalid" (click)="onSaveCar()" class="btn btn-success">Save Vehicle</button>
               } @else {
               <button type="button" (click)="onSaveCar()" class="btn btn-warning">Update Vehicle</button>
               }

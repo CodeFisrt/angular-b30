@@ -40,29 +40,61 @@
                 New Location Form
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        <label for="">Location Name</label>
-                        <input type="text" [(ngModel)]="newLocationObj.locationName" class="form-control">
+                <form #form="ngForm">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Location Name</label>
+                            <input type="text" #locationName="ngModel" name="locationName" [(ngModel)]="newLocationObj.locationName"
+                                required minlength="5" maxlength="20" class="form-control">
+                            <!-- -{{locationName.touched}} -->
+                            @if(locationName.touched || locationName.dirty) {
+                            <div class="text-danger">
+                                <!-- {{locationName.errors |json}} -->
+                                @if(locationName.errors?.['required']){
+                                <span>This Is Required</span>
+                                }
+                                @if (locationName.errors?.['minlength']) {
+                                <span>Min 5 Char Needed</span>
+                                }
+
+                            </div>
+                            }
+
+                        </div>
+                        <div class="col-6">
+                            <label for="">Location Code</label>
+                            <input type="text" #locationCode="ngModel" name="code" [(ngModel)]="newLocationObj.code" required
+                                minlength="3" class="form-control">
+                            @if(locationCode.touched || locationCode.dirty) {
+                            <div class="text-danger">
+                                @if (locationCode.errors?.['required']) {
+                                <span>THis is Require</span>
+                                }
+                                @if (locationCode.errors?.['minlength']) {
+                                <span>Min 3 Char Needed</span>
+                                }
+
+                            </div>
+                            }
+
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <label for="">Location Code</label>
-                        <input type="text" [(ngModel)]="newLocationObj.code" class="form-control">
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col-6">
-                        <button class="btn btn-secondary">Reset Form</button>
-                    </div>
-                     
-                    <div class="col-6">
-                        @if(newLocationObj.locationId ==0) {
-                            <button class="btn btn-success" (click)="onSaveLocation()">Save Location</button>
-                        } @else {
+                    <div class="row pt-3">
+                        <div class="col-6">
+                            <button class="btn btn-secondary">Reset Form</button>
+                        </div>
+
+                        <div class="col-6">
+                            --{{form.invalid}}
+                            @if(newLocationObj.locationId ==0) {
+                            <button class="btn btn-success" [disabled]="form.invalid" (click)="onSaveLocation()">Save Location</button>
+                            } @else {
                             <button class="btn btn-warning" (click)="onUpdate()">Update Location</button>
-                        } 
+                            }
+                        </div>
                     </div>
-                </div>
+                </form>
+
             </div>
         </div>
     </div>

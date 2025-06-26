@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { User } from '../../services/user';
 
 @Component({
@@ -9,7 +9,7 @@ import { User } from '../../services/user';
   templateUrl: './get-api.html',
   styleUrl: './get-api.css'
 })
-export class GetAPI {
+export class GetAPI implements OnInit{
 
   //http =  inject(HttpClient) //16
   userList: any[] = [];
@@ -19,9 +19,13 @@ export class GetAPI {
 
   constructor(private http: HttpClient,private userService: User) {
     debugger;
-    this.getJsonUsers();
+   
 
     const result =  this.userService.getSum(12,15);
+  }
+
+  ngOnInit(): void {
+     this.getJsonUsers();
   }
 
   getJsonUsers() {

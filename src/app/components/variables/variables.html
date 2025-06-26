@@ -1,11 +1,57 @@
-<p>variables works!</p>
+<div class="row">
+    <div class="col-3">
+        {{courseName}}
+        <br>
+        {{courseName | uppercase}}
+    </div>
+    <div class="col-3">
+        {{courseName}}
+        <br>
+        {{courseName | lowercase}}
+    </div>
+    <div class="col-3">
+        {{courseDescription}}
+        <br>
+        {{courseDescription | titlecase}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        {{productPrice}}
+        <br>
+         {{productPrice |number:'1.2-2'}}
+         <br>
+         {{productPrice |number:'1.0-3'}}
+    </div>
+    <div class="col-3">
+        {{currenDate}}
 
-<h3>Hi From Variable Page</h3>
+    <br>
+    {{currenDate |date}}
+      <br>
+    {{currenDate |date:'dd-MM-yy'}}
+     <br>
+    {{currenDate |date:'dd-MM-yyyy'}}
+     <br>
+    {{currenDate |date:'dd-MMM-yyyy'}}
+      <br>
+    {{currenDate |date:'dd/MMMM/yyyy'}}
+     <br>
+    {{currenDate |date:'hh:mm'}}
+    </div>
+    <div class="col-3">
+        {{cityList}}
+        <br>
+        {{cityList |slice:0:2}}
+         <br>
+        {{cityList |slice:2:5}}
+         <br>
+        {{cityList |slice:3}}
+    </div>
+</div>
 
-<select>
-    <option value="">asdasd</option>
-     <option value="">asdasd</option>
-      <option value="">asdasd</option>
-</select>
-
- 
+<div class="row">
+    <div class="col-3">
+            {{studentObj |json}}
+    </div>
+</div>

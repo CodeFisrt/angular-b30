@@ -1,8 +1,10 @@
+import { DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component, Optional } from '@angular/core';
 
 @Component({
   selector: 'app-variables',
-  imports: [],
+  imports: [UpperCasePipe, LowerCasePipe,TitleCasePipe
+    ,DecimalPipe,DatePipe,SlicePipe,JsonPipe],
   templateUrl: './variables.html',
   styleUrl: './variables.css'
 })
@@ -11,20 +13,30 @@ export class Variables {
  
 
   //declaration + initialization way-1
-  courseName: string = "Angular 20";
-  rollNo: number = 123;
-  isActive: boolean = true;
+   courseName: string = "Angular 20";
+  courseDescription = "this is angular course";
+  public rollNo: number = 123;
+  protected isActive: boolean = true;
   currenDate: Date = new Date();
 
+  productPrice: number = 123.532423;
+  cityList = [11,12,13,14,15,16,17,18];
+  studentObj = {
+    name:'aaa',
+    mobile:'222222',
+    email:'chetan@gmail.com'
+  }
   //declaration
   courseDuration: string;
-  productPrice: number;
+ 
 
 
   //initialization
   productName = "Moto A-2 Mobile";
 
   student :any; 
+
+  employee: unknown;
 
   firstName: string = 'Chetan';
   lastName: string = 'Jogi';
@@ -36,9 +48,9 @@ export class Variables {
   constructor(){ 
     this.fullName = this.firstName + " " + this.lastName; 
     this.courseDuration = "3 Months";
-    this.productPrice = 1200.50;
+    //this.productPrice = 1200.50;
 
-    this.courseName = '333';
+    ///this.courseName = '333';
 
     this.isActive = false;
     console.log(this.productPrice)
@@ -54,21 +66,21 @@ export class Variables {
     this.showWelcomeMessage();
     this.showMessage("Welcome");
 
-    const result = this.addTwoNum(12,45);
+    const result = this.addTwoNum(12,"abc");
     
   }
 
   showWelcomeMessage() {
     const name= "";
     let fullName = this.firstName + " " + this.lastName;
-    alert("Welcome b-30")
+   // alert("Welcome b-30")
   }
 
   private showMessage(message: string):void {
-    alert(message)
+    //alert(message)
   }
 
-  addTwoNum(num1: number, num2: number) :number {
+  addTwoNum(num1: number, num2: any) :number {
     return num1 + num2;
   }
 

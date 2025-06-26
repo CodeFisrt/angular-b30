@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Car } from '../../services/car';
 
 @Component({
@@ -12,8 +12,8 @@ export class ReactiveForm {
 
   newCarForm: FormGroup = new FormGroup({
     carId: new FormControl(0),
-    brand: new FormControl(""),
-    model: new FormControl(""),
+    brand: new FormControl("",[Validators.required,Validators.minLength(5)]),
+    model: new FormControl("",[Validators.required,Validators.email]),
     year: new FormControl("2025"),
     color: new FormControl(""),
     dailyRate: new FormControl(""),

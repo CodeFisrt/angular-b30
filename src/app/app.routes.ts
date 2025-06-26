@@ -9,14 +9,17 @@ import { GetAPI } from './components/get-api/get-api';
 import { PostAPI } from './components/post-api/post-api';
 import { CarMaster } from './components/car-master/car-master';
 import { ReactiveForm } from './components/reactive-form/reactive-form';
+import { Lifecycle } from './components/lifecycle/lifecycle';
+import { NotFound } from './components/not-found/not-found';
 
 export const routes: Routes = [
-
+ 
     {
         path:'',
-        redirectTo: 'dataBinding',
+        redirectTo:'dataBinding',
         pathMatch:'full'
     },
+   
     {
         path:'admin',
         component: Admin
@@ -56,6 +59,17 @@ export const routes: Routes = [
     {
         path:'reactive',
         component:ReactiveForm
+    },
+    {
+        path:'lifecycle',
+        component:Lifecycle
+    },
+    {
+        path:'**',
+        component:NotFound
     }
+
+    //wildcard route
+   
     
 ];

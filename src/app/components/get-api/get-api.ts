@@ -1,11 +1,11 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { User } from '../../services/user';
 
 @Component({
   selector: 'app-get-api',
-  imports: [NgFor],
+  imports: [NgFor,NgIf],
   templateUrl: './get-api.html',
   styleUrl: './get-api.css'
 })
@@ -15,6 +15,8 @@ export class GetAPI implements OnInit{
   userList: any[] = [];
   todoItemList: any[] = [];
   locationArray: any[] = [];
+  isLoader: boolean = true;
+
 
 
   constructor(private http: HttpClient,private userService: User) {
@@ -38,6 +40,7 @@ export class GetAPI implements OnInit{
     this.userService.getJsonUsers().subscribe((res:any)=>{
       debugger;
       this.userList = res;
+      this.isLoader = false;
     })
   }
 

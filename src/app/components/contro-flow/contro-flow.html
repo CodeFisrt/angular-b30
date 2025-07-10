@@ -1,5 +1,24 @@
 <div class="row">
     <div class="col-3">
+        <ul>
+            <ng-container *ngFor="let city of cityList">
+                <li *ngIf="city != ''">   {{city}}  </li>
+            </ng-container>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <p-datepicker [(ngModel)]="date" [minDate]="minDateValue" (onSelect)="onDateSelect()"
+            (onClose)="onDatepickerClosed()" />
+    </div>
+    <div class="col-3">
+        <input type="date">
+    </div>
+    <div class="col-4">
+        <p-select [options]="cityList" [filter]="true" [showClear]="true"> </p-select>
+    </div>
+    <div class="col-5">
         @if(isDiv1Visiable== true) {
         <div class="bg-success p-3">
             Div 1
@@ -28,10 +47,10 @@
 </div>
 <hr>
 <div class="row pt-3 pb-3">
-    <div class="col-3"> 
+    <div class="col-3">
         <div *ngIf="isDiv1Visiable == true" class="bg-success p-3">
             Div 1
-        </div> 
+        </div>
     </div>
     <div class="col-3">
 
@@ -67,7 +86,31 @@
         <button class="btn btn-success" *ngFor="let city of cityList"> {{city}}</button>
     </div>
     <div class="col-6">
-        <table class="table table-bordered">
+        <p-table [value]="studentList" [paginator]="true"
+    [rows]="10"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[5, 10, 20,50]" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header>
+                <tr> 
+                    <th pSortableColumn="name">Name</th>
+                    <th pSortableColumn="city">City</th>
+                    <th pSortableColumn="mobile">Mobile</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-item>
+                <tr>
+                      
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>
+                        <span *ngIf="item.isActive == true">Active</span>
+                        <span *ngIf="item.isActive == false">De-active</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <!-- <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Sr </th>
@@ -76,9 +119,7 @@
                     <th>Mobile</th>
                 </tr>
             </thead>
-
             <tbody>
-
                 <tr *ngFor="let item of studentList;let sr = index">
                     <td>{{ sr+1}}</td>
                     <td>{{item.name}}</td>
@@ -89,11 +130,8 @@
                         <span *ngIf="item.isActive == false">De-active</span>
                     </td>
                 </tr>
-
             </tbody>
-
-
-        </table>
+        </table> -->
     </div>
 </div>
 <hr>
@@ -201,6 +239,7 @@
             </thead>
 
             <tbody>
+                
                 @for (item of studentList; track $index) {
                 <tr>
                     <td>{{ $index+1}}</td>

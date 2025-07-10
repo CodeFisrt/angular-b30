@@ -1,23 +1,26 @@
 import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker';
+import { TableModule } from 'primeng/table';
 @Component({
   selector: 'app-contro-flow',
-  imports: [FormsModule,NgIf,NgFor,NgSwitch,NgSwitchCase,NgSwitchDefault],
+  imports: [FormsModule,SelectModule,TableModule,NgIf,NgFor,NgSwitch,NgSwitchCase,NgSwitchDefault,DatePickerModule],
   templateUrl: './contro-flow.html',
   styleUrl: './contro-flow.css'
 })
 export class ControFlow {
 
   isDiv1Visiable: boolean = true;
-
+ 
   div2Status: string = 'Show';
 
   isDiv3Visisable: boolean = true;
   startingCharDayName: string = '';
-
-  cityList = ['Nagpur', 'Delhi', 'Noida', 'Mumbai', 'Pune'];
+date: Date = new Date();
+minDateValue: Date =  new Date();
+  cityList = ['Nagpur', 'Delhi', '', 'Noida', 'Mumbai', 'Pune' ,''];
 
   getDiv1VisibilityStatus() {
     return this.isDiv1Visiable;
@@ -44,7 +47,13 @@ export class ControFlow {
     {isActive: false, name: 'EEE', city: 'Delhi', mobile: '3333333' }
   ]
 
+onDatepickerClosed() {
+  console.log("onDatepickerClosed")
+}
 
+onDateSelect() {
+  console.log("onDateSelect")
+}
 
 
   hideDiv1() {

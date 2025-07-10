@@ -2,10 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Car } from '../../services/car';
+import { BaseIcon } from "primeng/icons/baseicon";
+import { NgTemplateOutlet } from '@angular/common';
+import { Highlight } from '../../directive/highlight';
 
 @Component({
   selector: 'app-car-master',
-  imports: [FormsModule],
+  imports: [FormsModule, BaseIcon,NgTemplateOutlet, Highlight],
   templateUrl: './car-master.html',
   styleUrl: './car-master.css'
 })

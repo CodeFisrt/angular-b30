@@ -43,28 +43,29 @@
         <div class="card">
             <div class="card-header bg-primary">
                 New Location Form {{carObj.detail != undefined ? carObj.detail.price : '--'}}
-               == {{carObj.detail?.price}}
+                == {{carObj.detail?.price}}
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-6">
-                        <label for="">Location Name</label>
+                        <ng-container *ngTemplateOutlet="labelTem; context:{$implicit:{icon:'fa fa-user',lableText:'Brand', tooltipText:'Enter Brand Name'}}" > </ng-container>
                         <input type="text" [(ngModel)]="carObj.brand" class="form-control">
                     </div>
                     <div class="col-6">
-                        <label for="">Location Code</label>
+                         <ng-container *ngTemplateOutlet="labelTem;context:{$implicit:{icon:'fa fa-car',lableText:'model', tooltipText:'Enter model Name'}}"> </ng-container>
                         <input type="text" [(ngModel)]="carObj.model" class="form-control">
                     </div>
                     <div class="col-6">
-                        <label for="">Location Code</label>
+                        <ng-container *ngTemplateOutlet="labelTem;context:{$implicit:{icon:'fa fa-card',lableText:'year', tooltipText:'Enter year Name'}}"> </ng-container>
+
                         <input type="text" [(ngModel)]="carObj.year" class="form-control">
                     </div>
                     <div class="col-6">
-                        <label for="">Location Code</label>
+                        <label for="" appHighlight>Location Code</label>
                         <input type="text" [(ngModel)]="carObj.color" class="form-control">
                     </div>
                     <div class="col-6">
-                        <label for="">Location Code</label>
+                        <label for="" appHighlight>Location Code</label>
                         <input type="text" [(ngModel)]="carObj.dailyRate" class="form-control">
                     </div>
                     <div class="col-6">
@@ -82,12 +83,20 @@
                     </div>
 
                     <div class="col-6">
-                     
+
                         <button class="btn btn-warning" (click)="onUpdate()">Update Location</button>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #labelTem let-templateData> 
+    <label>
+        <i [class]="templateData.icon"></i> 
+        {{templateData.lableText}}
+        <span [title]="templateData.tooltipText"> <i class="fa fa-info"></i> </span>
+    </label> 
+</ng-template>

@@ -1,5 +1,11 @@
 <div class="row">
-    <div class="col-6"> 
+    <div class="col-6">
+        <p *ngIf="isLoader ==true; else Loadertem" > Loader visiable</p>
+    </div>
+    <ng-template #Loadertem>
+        <h3 class="text-danger">Loader hidden</h3>
+    </ng-template>
+    <div class="col-6">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -11,6 +17,23 @@
             </thead>
 
             <tbody>
+                @if (isLoader == true) {
+                <ng-container>
+                    <tr>
+                        <td colspan="6">
+                            <div class="spinner-border text-muted"></div>
+                            <div class="spinner-border text-primary"></div>
+                            <div class="spinner-border text-success"></div>
+                            <div class="spinner-border text-info"></div>
+                            <div class="spinner-border text-warning"></div>
+                            <div class="spinner-border text-danger"></div>
+                            <div class="spinner-border text-secondary"></div>
+                            <div class="spinner-border text-dark"></div>
+                            <div class="spinner-border text-light"></div>
+                        </td>
+                    </tr>
+                </ng-container>
+                } @else {
                 @for (item of userList; track $index) {
                 <tr>
                     <td>{{ $index+1}}</td>
@@ -18,9 +41,11 @@
                     <td>{{item.username}}</td>
                     <td>{{item.email}}</td>
                     <td>{{item.address.city}}</td>
-                      <td>{{item.address.geo.lat}}</td>
+                    <td>{{item.address.geo.lat}}</td>
                 </tr>
                 }
+                }
+
             </tbody>
 
 
@@ -30,14 +55,15 @@
         <button class="btn btn-success" (click)="getTodoItems()">Get To Do Items</button>
 
         <ul>
-            <li *ngFor="let item of todoItemList"> {{item.title}} - {{item.completed === true ? 'completed':'Not Completed'}}</li>
+            <li *ngFor="let item of todoItemList"> {{item.title}} - {{item.completed === true ? 'completed':'Not
+                Completed'}}</li>
         </ul>
     </div>
     <div class="col-3">
         <button class="btn btn-success" (click)="getAllLocations()">Get Location</button>
 
         <select>
-            <option *ngFor="let location of locationArray" > {{location.locationName}}</option>
+            <option *ngFor="let location of locationArray"> {{location.locationName}}</option>
         </select>
 
     </div>

@@ -11,6 +11,7 @@ import { CarMaster } from './components/car-master/car-master';
 import { ReactiveForm } from './components/reactive-form/reactive-form';
 import { Lifecycle } from './components/lifecycle/lifecycle';
 import { NotFound } from './components/not-found/not-found';
+import { Rxjs } from './components/rxjs/rxjs';
 
 export const routes: Routes = [
  
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path:'user-page',
         component: User
+    },
+    {
+        path:'rxjs',
+        component: Rxjs
     },
     {
         path:'car-master',

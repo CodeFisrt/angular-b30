@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, inject, OnDestroy, OnInit } from '@angular/core';
+import { User } from '../../services/user';
 
 @Component({
   selector: 'app-lifecycle',
@@ -14,14 +15,27 @@ export class Lifecycle implements OnInit, AfterContentInit, AfterContentChecked,
 
   http2= inject(HttpClient)
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private userService: User) {
     debugger;
     setTimeout(() => {
       this.courseName = "Angular Full Course"
     }, 5000)
     //variabel initialization
+    this.userService.numberSubject$.subscribe(num=>{
+      debugger;
+      
+    })
+
+    this.userService.activeUserBehvaiourSub$.subscribe((res:any)=>{
+      debugger;
+    })
   }
  
+  chnageBoth() {
+     this.userService.numberSubject$.next(66);
+
+    this.userService.activeUserBehvaiourSub$.next('Ankit')
+  }
 
   ngOnInit(): void {
     debugger;

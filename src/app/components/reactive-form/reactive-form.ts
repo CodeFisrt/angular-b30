@@ -12,11 +12,11 @@ export class ReactiveForm {
 
   newCarForm: FormGroup = new FormGroup({
     carId: new FormControl(0),
-    brand: new FormControl("",[Validators.required,Validators.minLength(5)]),
-    model: new FormControl("",[Validators.required,Validators.email]),
+    brand: new FormControl("", [Validators.required, Validators.minLength(5)]),
+    model: new FormControl("", [Validators.required, Validators.email]),
     year: new FormControl("2025"),
     color: new FormControl(""),
-    dailyRate: new FormControl(""),
+    dailyRate: new FormControl("",),
     carImage: new FormControl(""),
     regNo: new FormControl("")
   });
@@ -25,8 +25,32 @@ export class ReactiveForm {
   carList: any[] = [];
 
   constructor() {
+    setTimeout(() => {
+      this.newCarForm.controls['year'].setValue("2029")
+    }, 5000);
     this.getCars();
+    this.newCarForm.controls['year'].valueChanges.subscribe((yearValue => {
+      console.log(yearValue)
+    }))
+    this.newCarForm.valueChanges.subscribe((formValue=>{
+      console.log(formValue)
+    }))
+    this.newCarForm.controls['dailyRate'].valueChanges.subscribe(dailRate=>{
+      if(this.newCarForm.controls['year'].value == 2025 && dailRate >500) {
+        alert('for Cars with 2025 year dailu rate cant be grate than 500');
+      }
+    })
+    this.newCarForm.controls['regNo'].valueChanges.subscribe(regNoVal=>{
+      if(regNoVal != '' ) {
+        this.newCarForm.controls['carImage'].addValidators([Validators.required]);
+      } else {
+        this.newCarForm.controls['carImage'].removeValidators([Validators.required]);
+      }
+      this.newCarForm.updateValueAndValidity();
+    })
   }
+
+
 
   onEdit(carData: any) {
     this.newCarForm = new FormGroup({
@@ -38,6 +62,10 @@ export class ReactiveForm {
       dailyRate: new FormControl(carData.dailyRate),
       carImage: new FormControl(carData.carImage),
       regNo: new FormControl(carData.regNo)
+    })
+    this.newCarForm.patchValue({
+      carId:carData.carId,
+      brand: carData.barcnd
     })
   }
 

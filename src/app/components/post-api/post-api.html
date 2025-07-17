@@ -63,7 +63,8 @@
                         </div>
                         <div class="col-6">
                             <label for="">Location Code</label>
-                            <input type="text" #locationCode="ngModel" name="code" [(ngModel)]="newLocationObj.code" required
+                            <input type="text" (ngModelChange)="onCodeChange($event)"  
+                            #locationCode="ngModel" name="code" [(ngModel)]="newLocationObj.code" required
                                 minlength="3" class="form-control">
                             @if(locationCode.touched || locationCode.dirty) {
                             <div class="text-danger">
@@ -87,7 +88,12 @@
                         <div class="col-6">
                             --{{form.invalid}}
                             @if(newLocationObj.locationId ==0) {
-                            <button class="btn btn-success" [disabled]="form.invalid" (click)="onSaveLocation()">Save Location</button>
+                            <button class="btn btn-success" [disabled]="form.invalid" (click)="onSaveLocation()">
+                                @if(isAPICallInProgress ==true) {
+                                    <span class="spinner-border spinner-border-sm"></span>
+                                }
+                               
+                                Save Location</button>
                             } @else {
                             <button class="btn btn-warning" (click)="onUpdate()">Update Location</button>
                             }

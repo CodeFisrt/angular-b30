@@ -31,17 +31,18 @@ export class GetAPI implements OnInit{
   }
 
   getJsonUsers() {
-    debugger;
-    // this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((res: any) => {
+    console.log("start")
+    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((res: any) => {
+      debugger;
+       console.log("in subscribe")
+      this.userList = res;
+    })
+    console.log("end")
+    // this.userService.getJsonUsers().subscribe((res:any)=>{
     //   debugger;
     //   this.userList = res;
+    //   this.isLoader = false;
     // })
-
-    this.userService.getJsonUsers().subscribe((res:any)=>{
-      debugger;
-      this.userList = res;
-      this.isLoader = false;
-    })
   }
 
   getTodoItems() {

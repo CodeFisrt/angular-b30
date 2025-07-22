@@ -1,12 +1,11 @@
 <div class="row">
+ 
     <div class="col-6">
-        <p *ngIf="isLoader ==true; else Loadertem" > Loader visiable</p>
-    </div>
-    <ng-template #Loadertem>
-        <h3 class="text-danger">Loader hidden</h3>
-    </ng-template>
-    <div class="col-6">
-        <table class="table table-bordered">
+
+        <app-my-table [colArray]="columnList" [gridData]="userList"
+        (onEdit)="onUserEdit($event)" [needActionBtn]="false" (onDelete)="onUserDelete($event)"
+        > </app-my-table>
+        <!-- <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Sr </th>
@@ -49,23 +48,8 @@
             </tbody>
 
 
-        </table>
+        </table> -->
     </div>
-    <div class="col-3">
-        <button class="btn btn-success" (click)="getTodoItems()">Get To Do Items</button>
-
-        <ul>
-            <li *ngFor="let item of todoItemList"> {{item.title}} - {{item.completed === true ? 'completed':'Not
-                Completed'}}</li>
-        </ul>
-    </div>
-    <div class="col-3">
-        <button class="btn btn-success" (click)="getAllLocations()">Get Location</button>
-
-        <select>
-            <option *ngFor="let location of locationArray"> {{location.locationName}}</option>
-        </select>
-
-    </div>
-
+     
+     
 </div>

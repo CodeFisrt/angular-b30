@@ -2,10 +2,11 @@ import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MyTable } from '../../reusable/my-table/my-table';
 
 @Component({
   selector: 'app-post-api',
-  imports: [FormsModule, JsonPipe],
+  imports: [FormsModule, JsonPipe, MyTable],
   templateUrl: './post-api.html',
   styleUrl: './post-api.css'
 })
@@ -62,7 +63,11 @@ export class PostAPI {
     })
   }
   onEdit(data: any) {
+     debugger;
     this.newLocationObj = data;
   }
 
+  onLocationDelete(data:any) {
+    debugger;
+  }
 }

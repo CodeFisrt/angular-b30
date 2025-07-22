@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12 text-end">
+        <button class="btn btn-success" (click)="addNew()">Add New</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width:10%">Id</th>
+                    <th style="width:10%">User Id</th>
+                    <th style="width:35%">Title</th>
+                    <th style="width:40%">Body</th>
+                    <th style="width:5%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of postList; track $index) {
+                <tr>
+                    <td style="width:10%">
+                         @if (item.isEditable) {
+                            <input class="form-control" type="text" class="" [(ngModel)]="item.id">
+                         } @else { 
+                            {{item.id}}
+                         } 
+                    </td>
+                    <td style="width:10%">
+                        @if (item.isEditable) {
+                            <input class="form-control" type="text" class="" [(ngModel)]="item.userId">
+                         } @else { 
+                            {{item.userId}}
+                         } 
+                       
+                    </td>
+                    <td style="width:40%">
+                         @if (item.isEditable) {
+                            <input class="form-control" type="text" class="" [(ngModel)]="item.title">
+                         } @else { 
+                            {{item.title}}
+                         } 
+                         
+                    </td>
+                    <td style="width:40%">
+                        @if (item.isEditable) {
+                            <textarea class="form-control" [(ngModel)]="item.body"></textarea>
+                         } @else { 
+                            {{item.body}}
+                         }
+                       
+                    </td>
+                    <td style="width:5%"> 
+                        @if (item.isEditable) {
+                            @if (item.id == 0) {
+                                <button class="btn btn-sm btn-success" (click)="onSave(item)">Save</button>
+                            } @else {
+                                 <button class="btn btn-sm btn-warning">update</button>
+                            }
+                       
+                        <button class="btn btn-sm btn-secondary" (click)="cancelRow(item)">Cancel</button>
+                        } @else {
+                        <button class="btn btn-sm btn-primary" (click)="onEdit(item)" >Edit</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                        } 
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

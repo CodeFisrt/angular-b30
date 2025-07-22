@@ -2,10 +2,11 @@ import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { User } from '../../services/user';
+import { MyTable } from '../../reusable/my-table/my-table';
 
 @Component({
   selector: 'app-get-api',
-  imports: [NgFor,NgIf],
+  imports: [NgFor,NgIf,MyTable],
   templateUrl: './get-api.html',
   styleUrl: './get-api.css'
 })
@@ -16,6 +17,8 @@ export class GetAPI implements OnInit{
   todoItemList: any[] = [];
   locationArray: any[] = [];
   isLoader: boolean = true;
+
+  columnList: string[]= ['name','username','website','email']
 
 
 
@@ -30,12 +33,20 @@ export class GetAPI implements OnInit{
      this.getJsonUsers();
   }
 
+  onUserEdit(userData:any) {
+    debugger;
+  }
+  onUserDelete(userData:any) {
+    debugger;
+  }
+
   getJsonUsers() {
     console.log("start")
     this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((res: any) => {
       debugger;
        console.log("in subscribe")
       this.userList = res;
+      this.isLoader = false;
     })
     console.log("end")
     // this.userService.getJsonUsers().subscribe((res:any)=>{

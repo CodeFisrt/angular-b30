@@ -1,0 +1,31 @@
+<table class="table table-bordered table-success table-striped ">
+    <thead>
+        <tr>
+            <th>Sr </th>
+            @for (item of colArray; track $index) {
+            <th>{{item}}</th>
+            }
+            @if(needActionBtn == true) {
+            <th class="text-center">
+                Action
+            </th>
+            } 
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of gridData; track $index) {
+        <tr>
+            <td> {{$index+1}}</td>
+            @for (col of colArray; track $index) {
+            <td> {{item[col] }}</td>
+            }
+            @if(needActionBtn == true) { 
+            <td class="text-center">
+                <button class="btn btn-success btn-sm" (click)="editRecord(item)">Edit</button>
+                <button class="btn btn-danger btn-sm mx-2" (click)="deleteRecord(item)">Delete</button>
+            </td>
+            } 
+        </tr>
+        }
+    </tbody>
+</table>

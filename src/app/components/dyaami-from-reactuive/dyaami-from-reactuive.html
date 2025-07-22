@@ -1,0 +1,78 @@
+<div class="container mt-5">
+    <form [formGroup]="employeeForm">
+
+
+        <h2 class="mb-4">Employee Information Form</h2>
+
+        <!-- Employee Basic Details -->
+        <div class="card p-4 mb-4 shadow-sm">
+            <h5 class="mb-3">Basic Details</h5>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" formControlName="name" class="form-control" id="fullName"
+                        placeholder="Enter full name">
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" formControlName="email" class="form-control" id="email"
+                        placeholder="Enter email">
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" formControlName="phone" class="form-control" id="phone"
+                        placeholder="Enter phone number">
+                </div>
+                <div class="col-md-6">
+                    <label for="department" class="form-label">Department</label>
+                    <input type="text" formControlName="department" class="form-control" id="department"
+                        placeholder="Enter department">
+                </div>
+            </div>
+        </div>
+
+        <!-- Family Members -->
+        <div class="card p-4 mb-4 shadow-sm">
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="mb-3">Family Members</h5>
+
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-success" (click)="addNewFamily()">Add Family</button>
+                </div>
+            </div>
+            <div formArrayName="familyList">
+                @for (item of getFamily.controls; track $index) {
+                <div class="row g-3 mb-3" [formGroupName]="$index">
+                    <div class="col-md-4">
+                        <label class="form-label">Member Name</label>
+                        <input type="text" formControlName="memberName" class="form-control" placeholder="Enter name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Relationship</label>
+                        <input type="text" formControlName="relation" class="form-control" placeholder="Enter relationship">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Age</label>
+                        <input type="number" formControlName="age" class="form-control" placeholder="Enter age">
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-danger" (click)="removeFamiltyForm($index)">Remove</button>
+                    </div>
+                </div>
+                }
+
+            </div>
+            <!-- Family Member 1 -->
+
+
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-end">
+            <button class="btn btn-primary" type="button" (click)="onSaveEmp()">Submit</button>
+        </div>
+    </form>
+</div>

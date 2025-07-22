@@ -12,6 +12,8 @@ import { ReactiveForm } from './components/reactive-form/reactive-form';
 import { Lifecycle } from './components/lifecycle/lifecycle';
 import { NotFound } from './components/not-found/not-found';
 import { Rxjs } from './components/rxjs/rxjs';
+import { DyaamiFromReactuive } from './components/dyaami-from-reactuive/dyaami-from-reactuive';
+import { InlineEditing } from './components/inline-editing/inline-editing';
 
 export const routes: Routes = [
  
@@ -26,12 +28,20 @@ export const routes: Routes = [
         component: Admin
     },
     {
+        path:'inline-editing',
+        component: InlineEditing
+    },
+    {
         path:'dataBinding',
         component: DataBinding
     },
     {
         path:'user-page',
         component: User
+    },
+     {
+        path:'dynamicform',
+        component: DyaamiFromReactuive
     },
     {
         path:'rxjs',

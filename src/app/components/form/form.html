@@ -1,0 +1,67 @@
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    
+<div class="row pt-4">
+    <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter Brand" formControlName="Brand">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Model" formControlName="Model">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Year" formControlName="Year">
+    </div>
+</div>
+
+<div class="row pt-4">
+    <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car color" formControlName="Color">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Rate"  formControlName="DailyRate">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Reg No"  formControlName="RegNo">
+    </div>
+</div>
+
+<div class="row text-center pt-4">
+    <div class="col-md-12">
+        <button class="btn btn-sm btn-success" type="submit">Save</button>
+    </div>
+</div>
+</form>
+
+
+<form>
+    
+<div class="row pt-4">
+    <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter Brand" [(ngModel)]="carObj.Brand">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Model" [(ngModel)]="carObj.Model">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Year" [(ngModel)]="carObj.Year">
+    </div>
+</div>
+
+<div class="row pt-4">
+    <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car color" [(ngModel)]="carObj.Color">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Rate"  [(ngModel)]="carObj.DailyRate">
+    </div>
+     <div class="col-md-4">
+        <input type="text" class="form-control form-control-sm" placeholder="Enter car Reg No"  [(ngModel)]="carObj.RegNo" name="RegNo">
+    </div>
+</div>
+
+<div class="row text-center pt-4">
+    <div class="col-md-12">
+        <button class="btn btn-sm btn-success" type="submit" (click)="onSaveData()">Save</button>
+        <app-button btnName="btnName"></app-button>
+    </div>
+</div>
+</form>

@@ -14,6 +14,9 @@ import { NotFound } from './components/not-found/not-found';
 import { Rxjs } from './components/rxjs/rxjs';
 import { DyaamiFromReactuive } from './components/dyaami-from-reactuive/dyaami-from-reactuive';
 import { InlineEditing } from './components/inline-editing/inline-editing';
+import { FileUpload } from 'primeng/fileupload';
+import { Signal } from './components/signal/signal';
+import { Form } from './components/form/form';
 
 export const routes: Routes = [
  
@@ -26,6 +29,14 @@ export const routes: Routes = [
     {
         path:'admin',
         component: Admin
+    },
+     {
+        path:'fileUpload',
+        component: FileUpload
+    },
+     {
+        path:'signal',
+        component: Signal
     },
     {
         path:'inline-editing',
@@ -78,6 +89,10 @@ export const routes: Routes = [
     {
         path:'lifecycle',
         component:Lifecycle
+    },
+      {
+        path:'form',
+        component:Form
     },
     {
         path:'**',

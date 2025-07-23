@@ -8,7 +8,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rxjs',
-  imports: [AsyncPipe, JsonPipe, Lifecycle, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './rxjs.html',
   styleUrl: './rxjs.css'
 })

@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-table',
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './my-table.html',
   styleUrl: './my-table.css'
 })

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FileUpload } from "../file-upload/file-upload";
 
 @Component({
   selector: 'app-inline-editing',
-  imports: [FormsModule],
+  imports: [FormsModule, FileUpload],
   templateUrl: './inline-editing.html',
   styleUrl: './inline-editing.css'
 })
@@ -53,7 +54,7 @@ export class InlineEditing implements OnInit {
 
   removeEditable() {
     this.postList.forEach(element => {
-      element.isEditable = false;
+     // element.isEditable = false;
     });
   }
   cancelRow(item: any) {
